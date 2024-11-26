@@ -5,7 +5,7 @@ import { UserService } from './user.service';
 
 @Controller('user')
 export class UserController {
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) { }
   @Get('me')
   getMe(@Session() session: SessionData) {
     return this.userService.getMe(session.user.userId);
@@ -17,8 +17,8 @@ export class UserController {
     possession: 'any',
   })
   @Post('promote')
-  promoteUserToManager(@Body('employeeId') employeeId: string) {
-    return this.userService.promoteUserToManager(employeeId);
+  promoteUserToManager(@Body('employeeId') employeeId: string, @Session() session: SessionData) {
+    return this.userService.promoteUserToManager(employeeId, session.user.roles[0]);
   }
 
   @UseRoles({
@@ -27,7 +27,7 @@ export class UserController {
     possession: 'any',
   })
   @Post('demote')
-  demoteManagerToUser(@Body('employeeId') employeeId: string) {
-    return this.userService.demoteManagerToUser(employeeId);
+  demoteManagerToUser(@Body('employeeId') employeeId: string, @Session() session: SessionData) {
+    return this.userService.demoteManagerToUser(employeeId, session.user.roles[0]);
   }
 }

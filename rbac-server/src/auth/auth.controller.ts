@@ -17,7 +17,7 @@ import { AuthService } from './auth.service';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) { }
   @SetMetadata('isPublic', true)
   @UseGuards(AuthGuard('local'))
   @HttpCode(HttpStatus.OK)
@@ -30,6 +30,9 @@ export class AuthController {
       username: req.user.username,
       roles: req.user.roles,
     };
+
+    console.log(session);
+
     return {
       status: HttpStatus.OK,
     };

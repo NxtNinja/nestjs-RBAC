@@ -5,7 +5,7 @@ import { SessionData } from 'express-session';
 
 @Controller('employeeinfo')
 export class EmployeeInfoController {
-  constructor(private employeeInfoService: EmployeeInfoService) {}
+  constructor(private employeeInfoService: EmployeeInfoService) { }
 
   @UseRoles({
     resource: 'employeeInfo',
@@ -18,7 +18,7 @@ export class EmployeeInfoController {
   }
 
   @UseRoles({
-    resource: 'managedEmployeeData',
+    resource: 'managedEmployeeInfo',
     action: 'read',
     possession: 'any',
   })
@@ -38,19 +38,16 @@ export class EmployeeInfoController {
   }
 
   @UseRoles({
-    resource: 'employeeData',
+    resource: 'managedEmployeeInfo',
     action: 'read',
     possession: 'any',
   })
-  @Get(':department')
+  @Get('department/:department')
   getEmployeesByDepartment(
-    @Param('sector') sector: string,
+    @Param('department') department: string,
     @Session() session: SessionData,
   ) {
-    return this.employeeInfoService.getEmployeesBySector(
-      session.user.userId,
-      session.user.roles[0],
-      sector,
-    );
+    return this.employeeInfoService.getEmployeesBySector(session.user.userId, session.user.roles[0], department);
+
   }
 }
