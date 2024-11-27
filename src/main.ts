@@ -8,22 +8,23 @@ async function bootstrap() {
 
   app.use(
     session({
+      secret: process.env.SESSION_SECRET || 'supersecret', // Use environment variable
       resave: false,
       saveUninitialized: false,
       name: 'session',
-      secret: 'supersecret',
       cookie: {
-        secure:false,
-        httpOnly: true, // To prevent client-side JS from accessing the cookie
-        maxAge: 3600000, // 
-        sameSite: "none"
+        secure: true,
+        httpOnly: true,
+        maxAge: 3600000,
+        sameSite: 'none',
       },
-    }),
+    })
   );
 
   app.enableCors({
     origin: 'https://rbac-nextjs-ry8w2.ondigitalocean.app',
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   });
 
   app.useGlobalPipes(
