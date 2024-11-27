@@ -35,6 +35,7 @@ export class AuthController {
     };
   }
 
+  //I will implement this API in future
   @SetMetadata('isPublic', true)
   @HttpCode(HttpStatus.CREATED)
   @Post('/register')
@@ -44,5 +45,19 @@ export class AuthController {
       status: HttpStatus.CREATED,
       user,
     };
+  }
+
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @Post('/logout')
+  logout(@Req() req: Request) {
+    return new Promise((resolve, reject) => {
+      req.session.destroy((err) => {
+        if (err) reject(err);
+        resolve({
+          status: 204,
+          message: 'Session destroyed',
+        });
+      });
+    });
   }
 }

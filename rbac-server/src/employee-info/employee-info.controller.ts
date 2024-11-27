@@ -18,7 +18,7 @@ export class EmployeeInfoController {
   }
 
   @UseRoles({
-    resource: 'managedEmployeeData',
+    resource: 'managedEmployeeInfo',
     action: 'read',
     possession: 'any',
   })
