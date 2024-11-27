@@ -16,12 +16,13 @@ async function bootstrap() {
         secure:true,
         httpOnly: true, // To prevent client-side JS from accessing the cookie
         maxAge: 3600000, // 
+        
       },
     }),
   );
 
   app.enableCors({
-    origin: 'https://rbac-nextjs-ry8w2.ondigitalocean.app/',
+    origin: 'https://rbac-nextjs-ry8w2.ondigitalocean.app',
     credentials: true,
   });
 
