@@ -44,11 +44,7 @@ export class AuthController {
   @HttpCode(HttpStatus.CREATED)
   @Post('/register')
   async register(@Body() createUserDto: CreateUserDto) {
-    const user = await this.authService.register(createUserDto);
-    return {
-      status: HttpStatus.CREATED,
-      user,
-    };
+    return await this.authService.register(createUserDto);
   }
   @SetMetadata('isPublic', true)
   @HttpCode(HttpStatus.CREATED)
