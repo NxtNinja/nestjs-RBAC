@@ -54,3 +54,6 @@ You can log in to the application using the following test credentials:
 - **Database Driver**: Prisma
 - **Hosting**: DigitalOcean App Platform
 - **Data Population**: Faker.js
+
+Frontend Repository Link ---> [https://github.com/NxtNinja/admin-ui-RBAC](https://github.com/NxtNinja/admin-ui-RBAC)
+
