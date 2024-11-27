@@ -51,5 +51,6 @@ You can log in to the application using the following test credentials:
 
 - **Framework**: NestJS
 - **Database**: SQLite
+- **Database Driver**: Prisma
 - **Hosting**: DigitalOcean App Platform
 - **Data Population**: Faker.js
