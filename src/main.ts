@@ -18,7 +18,6 @@ async function bootstrap() {
         maxAge: 3600000
       },
       proxy: true, // Important for secure cookies behind a proxy
-      unset: 'destroy',
     }),
   );
 
