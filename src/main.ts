@@ -13,10 +13,10 @@ async function bootstrap() {
       name: 'session',
       secret: 'supersecret',
       cookie: {
-        secure:true,
+        secure:false,
         httpOnly: true, // To prevent client-side JS from accessing the cookie
         maxAge: 3600000, // 
-        
+        sameSite: "none"
       },
     }),
   );
