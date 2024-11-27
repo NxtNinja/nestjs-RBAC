@@ -14,8 +14,11 @@ async function bootstrap() {
       secret: 'supersecret',
       cookie: {
         secure:true,
-        sameSite: "none"
+        sameSite: "none",
+        maxAge: 3600000
       },
+      proxy: true, // Important for secure cookies behind a proxy
+      unset: 'destroy',
     }),
   );
 
