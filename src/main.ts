@@ -13,7 +13,8 @@ async function bootstrap() {
       name: 'session',
       secret: 'supersecret',
       cookie: {
-        secure:false
+        secure:false,
+        sameSite: "none"
       },
     }),
   );
