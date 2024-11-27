@@ -27,6 +27,8 @@ async function bootstrap() {
     origin: 'https://rbac-nextjs-ry8w2.ondigitalocean.app',
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'Cookie']
+
   });
 
   app.useGlobalPipes(
