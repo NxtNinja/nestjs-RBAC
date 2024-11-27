@@ -22,5 +22,34 @@ Project Link --> [https://rbac-nextjs-ry8w2.ondigitalocean.app](https://rbac-nex
     - Can view only their own profile details.
 - **Database Integration**:
   - Roles, departments, and user details are stored in the database (SQLite).
+- **Dummy Data**:
+  - **Faker.js** was used to populate the database with dummy data, including users, departments, and other necessary entities for testing and demonstration.
 - **Secure Hosting**:
   - Deployed on **DigitalOcean App Platform** for scalability and security.
+
+---
+
+## Test Users
+
+You can log in to the application using the following test credentials:
+
+- **Admin**:  
+  Email: `terry.colby@e-corp.com`  
+  Password: `newpass`
+
+- **Manager**:  
+  Email: `tyrell.wellick@e-corp.com`  
+  Password: `pwned`
+
+- **User**:  
+  Email: `Bailee_Williamson82@e-corp.com`  
+  Password: `pwned`
+
+---
+
+## Tech Stack
+
+- **Framework**: NestJS
+- **Database**: SQLite
+- **Hosting**: DigitalOcean App Platform
+- **Data Population**: Faker.js
