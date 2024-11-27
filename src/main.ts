@@ -1,13 +1,20 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as session from 'express-session';
+import * as SQLiteStore from 'connect-sqlite3';
 import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  const SQLiteSessionStore = SQLiteStore(session);
+
   app.use(
     session({
+      store: new SQLiteSessionStore({
+        db: 'sessions.sqlite',  // SQLite database file for sessions
+        dir: './',               // Directory where the file will be stored
+      }),
       resave: false,
       saveUninitialized: false,
       name: 'session',

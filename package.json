@@ -29,6 +29,7 @@
     "argon2": "^0.30.3",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
+    "connect-sqlite3": "^0.9.15",
     "express-session": "^1.17.3",
     "nest-access-control": "^2.2.0",
     "passport": "^0.6.0",
