@@ -4,7 +4,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class EmployeeInfoService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
   getAllEmployees() {
     return this.prisma.user.findMany({
@@ -123,6 +123,8 @@ export class EmployeeInfoService {
   }
 
   async getEmployeesBySector(userId: string, role: Role, department: string) {
+    console.log(userId, role, department);
+
     if (role === Role.ADMIN) {
       return this.prisma.user.findMany({
         where: {
@@ -130,8 +132,8 @@ export class EmployeeInfoService {
             every: {
               role: Role.USER,
               department: {
-                name: {
-                  contains: department,
+                id: {
+                  equals: department,
                 },
               },
             },
@@ -156,8 +158,8 @@ export class EmployeeInfoService {
     // Check for the user has manager role and has access to this department
     const hasDepartmentAccess = await this.prisma.department.findFirst({
       where: {
-        name: {
-          contains: department,
+        id: {
+          equals: department,
         },
         usersLink: {
           some: {
@@ -176,8 +178,8 @@ export class EmployeeInfoService {
           every: {
             role: Role.USER,
             department: {
-              name: {
-                contains: department,
+              id: {
+                equals: department,
               },
             },
           },
