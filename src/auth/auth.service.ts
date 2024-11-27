@@ -65,4 +65,13 @@ export class AuthService {
 
     return newUser;
   }
+
+  async getAllDepartments(){
+    return this.prisma.department.findMany({
+      select: {
+        id: true,
+        name: true,
+      }
+    })
+  }
 }

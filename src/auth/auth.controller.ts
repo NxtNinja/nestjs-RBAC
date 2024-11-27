@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Get,
   HttpCode,
   HttpStatus,
   Post,
@@ -48,6 +49,12 @@ export class AuthController {
       status: HttpStatus.CREATED,
       user,
     };
+  }
+  @SetMetadata('isPublic', true)
+  @HttpCode(HttpStatus.CREATED)
+  @Get('/departments')
+  async getDepartments() {
+    return await this.authService.getAllDepartments();
   }
 
   @HttpCode(HttpStatus.NO_CONTENT)
