@@ -8,17 +8,14 @@ async function bootstrap() {
 
   app.use(
     session({
-      secret: process.env.SESSION_SECRET || 'supersecret', // Use environment variable
       resave: false,
       saveUninitialized: false,
       name: 'session',
+      secret: 'supersecret',
       cookie: {
-        secure: true,
-        httpOnly: true,
-        maxAge: 3600000,
-        sameSite: 'none',
+        secure:false
       },
-    })
+    }),
   );
 
   app.enableCors({
